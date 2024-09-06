@@ -3,8 +3,9 @@ const app = express();
 require("dotenv").config();
 const morgan = require("morgan");
 
-const connectDB = require("./server/db/connect.js");
-const router = require("./server/routes/tasks.js");
+const connectDB = require("./config/dbConfig.js");
+const router = require("./routes/taskRoutes.js");
+
 app.use(express.json());
 app.use(morgan("dev"));
 
