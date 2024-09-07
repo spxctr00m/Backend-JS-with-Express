@@ -9,7 +9,7 @@ const router = require("./routes/taskRoutes.js");
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.use("/api/tasks", router);
+app.use("/api/v1/tasks", router);
 
 const PORT = process.env.PORT || 3200;
 
