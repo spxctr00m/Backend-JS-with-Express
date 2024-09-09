@@ -7,7 +7,11 @@ const {
   updateTask,
 } = require("../controllers/tasks");
 
-router.route("/").get(getAllTasks).post(createTask);
-router.route("/:taskId").get(getTask).patch(updateTask).delete(deleteTask);
+router.route("/tasks").get(getAllTasks).post(createTask);
+router
+  .route("/tasks/:taskId")
+  .get(getTask)
+  .patch(updateTask)
+  .delete(deleteTask);
 
 module.exports = router;
