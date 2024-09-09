@@ -2,11 +2,13 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const morgan = require("morgan");
+const cors = require("cors");
 
 const connectDB = require("./config/dbConfig.js");
 const router = require("./routes/taskRoutes.js");
 
 app.use(express.json());
+app.use(cors());
 app.use(morgan("dev"));
 
 app.use("/api/v1/tasks", router);
