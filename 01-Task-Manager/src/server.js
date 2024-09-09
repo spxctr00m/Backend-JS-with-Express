@@ -8,6 +8,7 @@ const connectDB = require("./config/dbConfig.js");
 const router = require("./routes/taskRoutes.js");
 
 app.use(express.json());
+app.use(express.static("public"));
 app.use(cors());
 app.use(morgan("dev"));
 

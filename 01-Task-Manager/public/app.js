@@ -4,6 +4,24 @@ const taskForm = document.querySelector(".task-form");
 const taskInput = document.querySelector(".task-input");
 const taskList = document.getElementById("taskList");
 
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/api/v1/tasks")
+    .then((res) => res.json())
+    .then((data) => {
+      const { tasks } = data;
+      tasks.forEach((task) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${task.name} - ${
+          task.completed ? "Completed" : "Pending"
+        }`;
+        taskList.appendChild(listItem);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching tasks:", error);
+    });
+});
+
 taskForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -15,7 +33,7 @@ taskForm.addEventListener("submit", async (event) => {
       completed: false,
     };
 
-    fetch("http://localhost:3200/api/v1/tasks", {
+    fetch("/api/v1/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,8 +42,7 @@ taskForm.addEventListener("submit", async (event) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        taskData.value = "";
-        console.log("API Response:", data);
+        taskInput.value = "";
         const { name, completed, _id } = data.task;
 
         const listItem = document.createElement("li");
