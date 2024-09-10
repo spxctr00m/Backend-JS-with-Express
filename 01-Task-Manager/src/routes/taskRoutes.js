@@ -6,7 +6,6 @@ const {
   deleteTask,
   updateTask,
 } = require("../controllers/tasks");
-const auth = require("../middlewares/auth");
 
 router.get("/tasks/test", (req, res) => {
   res.json({
