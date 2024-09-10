@@ -7,13 +7,14 @@ const cors = require("cors");
 const connectDB = require("./config/dbConfig.js");
 const taskRoutes = require("./routes/taskRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
+const auth = require("./middlewares/auth.js");
 
 app.use(express.json());
 app.use(express.static("public"));
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use("/api/v1/", taskRoutes, userRoutes);
+app.use("/api/v1/", auth, taskRoutes, userRoutes);
 
 const PORT = process.env.PORT;
 

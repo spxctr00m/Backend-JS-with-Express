@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const TaskSchema = new mongoose.Schema({
-  task: {
+const taskSchema = new mongoose.Schema({
+  description: {
     type: String,
     required: [true, "Must enter a task"],
     trim: true,
@@ -11,6 +11,11 @@ const TaskSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
 });
 
-module.exports = mongoose.model("Task", TaskSchema);
+module.exports = mongoose.model("Task", taskSchema);
