@@ -2,8 +2,8 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const getUsers = (req, res) => {
-  res.json({ msg: "Welcome here boss" });
+const getUser = (req, res) => {
+  res.json({ msg: req.user });
 };
 
 // register a new user
@@ -46,4 +46,4 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, registerUser, loginUser };
+module.exports = { getUser, registerUser, loginUser };
