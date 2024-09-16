@@ -7,7 +7,6 @@ const cors = require("cors");
 const connectDB = require("./config/dbConfig.js");
 const taskRoutes = require("./routes/taskRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
-const auth = require("./middlewares/auth.js");
 
 app.use(express.json());
 app.use(express.static("public"));
