@@ -14,7 +14,7 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use("/api/v1/", auth, taskRoutes, userRoutes);
+app.use("/api/v2/", taskRoutes, userRoutes);
 
 const PORT = process.env.PORT;
 
@@ -24,7 +24,7 @@ const PORT = process.env.PORT;
       console.log(`Server is listening on Port ${PORT}⚡`);
     });
     await connectDB(process.env.MONGO_URI).then(() => {
-      console.log("Connected to MongoDB✔️");
+      console.log("V2 Connected to MongoDB✔️");
     });
   } catch (error) {
     console.log(error);

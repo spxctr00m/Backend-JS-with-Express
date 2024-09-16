@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon ./src/server.js",
-    "start": "node ./src/server.js"
+    "start": "node ./api/v1/src/server.js",
+    "start:v1": "nodemon ./api/v1/src/server.js",
+    "start:v2": "nodemon ./api/v2/src/server.js"
   },
   "keywords": [],
   "author": "",
